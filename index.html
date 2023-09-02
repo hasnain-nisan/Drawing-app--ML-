@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,maximum-scale=0.9">
+    <meta charset="UTF-8" />
+    <title>Data creator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+    <div id="content">
+        <h1>Data creator</h1>
+        <div id="studentInfoDiv">
+            <input type="text" id="student" placeholder="type your name">
+            <button onclick="start()">
+                start
+            </button>
+        </div>
+        <div id="sketchPadContainer"
+            style="visibility: hidden;"
+        >
+        </div>
+    </div>
+    <script src="./js/draw.js"></script>
+    <script src="./js/sketchPad.js"></script>
+    <script>
+        const data = {
+            student: null,
+            session: new Date().getTime(),
+            drawings: {}
+        }
+
+        let sketchPadContainer = document.getElementById('sketchPadContainer')
+        const sketchPad = new SketchPad(sketchPadContainer)
+    
+        const start = () => {
+            const student = document.getElementById('student');
+            const div = document.getElementById('studentInfoDiv');
+            if(student.value == ""){
+                alert("Please type your name first");
+                return
+            }
+
+            data.student = student.value;
+            div.style.display = 'none';
+            sketchPadContainer.style.visibility = 'visible';
+        }
+    </script>
+</body>
+</html>
